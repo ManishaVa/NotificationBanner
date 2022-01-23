@@ -46,6 +46,10 @@ open class BaseNotificationBanner: UIView {
     /// Notification banner object key that is included with each Notification
     public static let BannerObjectKey: String = "NotificationBannerObjectKey"
 
+    //custom public iVars
+    public var notificationCategoryIdentifier: String = ""
+    public var notificationReferenceData: [String : Any] = [String : Any]()
+    
     /// The delegate of the notification banner
     public weak var delegate: NotificationBannerDelegate?
 
