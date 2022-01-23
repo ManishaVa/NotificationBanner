@@ -106,6 +106,9 @@ open class BaseNotificationBanner: UIView {
     /// If true, notification will dismissed when swiped up
     public var dismissOnSwipeUp: Bool = true
 
+    /// Closure that will be executed if the notification banner is disappeared
+    public var onDisappear: (() -> Void)?
+    
     /// Closure that will be executed if the notification banner is tapped
     public var onTap: (() -> Void)?
 
@@ -575,6 +578,10 @@ open class BaseNotificationBanner: UIView {
                 object: self,
                 userInfo: self.notificationUserInfo
             )
+            
+            if self.onDisappear != nil {
+                self.onDisappear!()
+            }
             
             self.delegate?.notificationBannerDidDisappear(self)
 
